@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-app",
+  "name": "app",
   "description": "{{description}}",
   "author": "app",
   "version": "0.0.1",
@@ -41,24 +41,20 @@
       ]
     },
     "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ],
+      "target": [{
+        "target": "nsis",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      }],
       "artifactName": "${productName}_setup_${version}.${ext}",
       "icon": "src/main/public/icon.ico"
     },
-    "publish": [
-      {
-        "provider": "generic",
-        "url": ""
-      }
-    ],
+    "publish": [{
+      "provider": "generic",
+      "url": ""
+    }],
     "nsis": {
       "oneClick": false,
       "perMachine": false,

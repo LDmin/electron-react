@@ -73,7 +73,7 @@ const CaseList: React.SFC<IProps> = () => {
 
   return (
     <Card>
-      <Row>
+      <Row align='middle'>
         <Col flex='auto'>
           <Title level={2}>案件列表</Title>
         </Col>
