@@ -85,6 +85,7 @@
   "devDependencies": {
     "@types/classnames": "^2.2.10",
     "@types/js-cookie": "^2.2.6",
+    "@types/mockjs": "^1.0.3",
     "@types/mousetrap": "^1.6.3",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",

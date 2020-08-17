@@ -6,8 +6,6 @@ import React from "react";
 import { ConfigProvider } from "antd";
 import zhCN from "antd/es/locale/zh_CN";
 
-import "antd/dist/antd.css";
-
 // 是否开启app自动更新
 window.isOpenAutoUpdate = false;
 
@@ -15,11 +13,12 @@ window.isOpenAutoUpdate = false;
 // const isWeb = process.env.TARGET === 'web'
 
 // 关闭electron的loading
-setTimeout(() => window.stopLoading(), 1000);
+// setTimeout(() => window.stopLoading(), 1000);
 
 // 覆写 render
 export function render(oldRender: () => void) {
   oldRender();
+  window.stopLoading();
 }
 
 // 修改交给 react-dom 渲染时的根组件

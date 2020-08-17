@@ -1,0 +1,47 @@
+@import '../../assets/style/common.less';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  padding: 0 @space * 4;
+  height: @space * 8;
+  line-height: @space * 8;
+  font-size: larger;
+  background: linear-gradient(#cd1c17, #a41315);
+  color: #ffffff;
+
+  .search {
+    padding-left: @space * 2;
+    width: @space * 30;
+    background-color: transparent;
+    border-radius: 17px;
+    border-color: #ffffff;
+
+    :global {
+      .ant-input {
+        background-color: transparent;
+        color: #ffffff;
+      }
+
+      .ant-input-suffix {
+        .ant-input-search-icon {
+          color: #ffffff;
+
+          &::before {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.section {
+  flex: 1;
+  padding: @space * 4;
+  background-color: #f8fafd;
+}

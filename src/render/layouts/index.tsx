@@ -1,12 +1,34 @@
-import React, { useState } from "react";
-import { Input, Divider, Card } from "antd";
+import React, { useState, useEffect } from "react";
+import { Input, Drawer, Card } from "antd";
 import { Link } from "umi";
+import { usePersistFn } from "ahooks";
+import Mousetrap from "mousetrap";
 
 const Layout: React.FC = (props) => {
+  const [visible, setVisible] = useState(false);
   const [url, setUrl] = useState("");
+
+  const onClose = usePersistFn(() => {
+    setVisible(!visible);
+  });
+
+  useEffect(() => {
+    Mousetrap.bind(["command+t", "ctrl+t"], () => {
+      setVisible((v) => !v);
+      return false;
+    });
+    Mousetrap.bind(["command+r", "ctrl+r"], () => {
+      location.reload();
+      return false;
+    });
+  }, []);
   return (
     <>
-      <Card>
+      <Drawer
+        placement="top"
+        visible={visible}
+        onClose={onClose}
+      >
         <Input
           style={{ width: 200 }}
           value={url}
@@ -14,8 +36,8 @@ const Layout: React.FC = (props) => {
         >
         </Input>
         <Link to={url}>go to {url}</Link>
-      </Card>
-      <div>{props.children}</div>
+      </Drawer>
+      {props.children}
     </>
   );
 };
