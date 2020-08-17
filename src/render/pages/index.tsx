@@ -1,23 +1,23 @@
-import React from 'react'
-import './home.normal.less'
-import AutoUpdate from '@components/AutoUpdate'
-import { Button, message } from 'antd'
-import Store from 'electron-store'
+import React, { FC } from "react";
+import "./index.less";
+import { Button, message } from "antd";
+import Store from "electron-store";
+import { useLocation, Link } from "umi";
 
-const store = new Store()
+const store = new Store();
 
-export default function() {
+const Root: FC = (props) => {
+  const location = useLocation();
   const getLocalStoreData = () => {
-    message.info(store.get('LOCAL_ELECTRON_STORE'))
-  }
+    message.info(store.get("LOCAL_ELECTRON_STORE"));
+  };
   return (
-    <div className='homewrap'>
-      <div className='bigFt'>Welcome to MapleChain Electron App</div>
-      <AutoUpdate />
-      <div className='bigFt'>electron-store</div>
-      <div className='bigFt'>
-        <Button onClick={getLocalStoreData}>Get init store data</Button>
-      </div>
+    <div>
+      pathname: {location.pathname}
+      <Link to="/login">Go to login</Link>
+      <div>{props.children}</div>
     </div>
-  )
-}
+  );
+};
+
+export default Root;

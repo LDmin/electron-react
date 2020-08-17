@@ -1,49 +1,19 @@
 # electron-react-umi-tpl
 
-[github](https://github.com/qld-cf/electron-react-tpl)
-[English Version](https://github.com/qld-cf/electron-react-tpl/blob/master/README_EN.md)
-
-
-更新日志：
-
-1. 2020-06-08 添加[全量更新](https://segmentfault.com/a/1190000016674982)功能
-2. 2020-06-29 添加[远程增量更新功能](https://github.com/qld-cf/electron-react-tpl/blob/master/docs/PART_UPDATE.md)，无需下载包来重新安装更新；
-3. 2020-07-27 优化初始化客户端loading等待页面，优化页面
-[中文](https://github.com/qld-cf/electron-react-tpl/blob/master/docs/CHANGE_LOG.md)
-[English Version](https://github.com/qld-cf/electron-react-tpl/blob/master/docs/CHANGE_LOG_EN.md)
-
-
-
-`electron 8.2` + `umi 3.1` + `typescript react 16.12` + `redux` + `antDesign 4.0` + `eslint tslint react-tslint`脚手架, 下载即用，已经为你做好了基座设施
+`electron 8.2` + `umi 3.1` + `typescript react 16.12` + `dva` + `antDesign 4` + `eslint tslint react-tslint`
 
 #### 客户端集成:
 - [x] 自动更新(electron-builder)
-- [x] 托盘菜单 app启动loading加载条
-- [x] electron打印(electron 5.0以上支持)
+- [x] app启动loading加载条
 - [x] electron-log 本地日志  electron-store 本地存储
-- [x] app打包图标 添加增量更新
-- [x] 添加redux-devtools插件
-- [ ] app崩溃信息采集
-- [ ] app消息通知，快捷键等
-- [ ] 右键复制黏贴
-
-
 
 #### web端:
 1. 基于[umi](https://umijs.org/zh-CN)脚手架，基础配置已集成，开发者关注业务代码编写即可
-2. 本地存储redux(redux-saga)
+2. 本地存储redux(dva)
 3. antDesign >= 4.0
 4. iconfont图标
 
 - 菜单配置 `src/layouts/menu/config.tsx`
-
-
-#### Fix:
-- [x] 升级到electron9.1.0，同步官方
-
-
-TODOLIST:  1. node Api功能封装与渲染进程业务解耦
-
 
 ### 开启
 
@@ -55,7 +25,6 @@ npm run pack-mac // 打包mac平台
 npm run pack-windows // 打包windows平台
 npm run pack-all // 打包所有平台
 ```
-
 
 ### 目录树
 ```
@@ -94,9 +63,6 @@ npm run pack-all // 打包所有平台
         |   |   |-- AppMainWindow.js
         |   |   |-- AppTray.js
         |   |   |-- electron-helper.js
-        |   |-- print 打印
-        |   |   |-- print.html
-        |   |   |-- print.js
         |   |-- public 附件
         |   |   |-- icon.ico
         |   |   |-- icon.png
@@ -128,16 +94,6 @@ npm run pack-all // 打包所有平台
             |   |-- enum.ts
             |   |-- global.ts
             |-- components 组件
-            |   |-- readme.md
-            |   |-- AutoUpdate
-            |   |   |-- index.tsx
-            |   |   |-- style.less
-            |   |-- FormCps
-            |   |   |-- index.tsx
-            |   |   |-- readme.md
-            |   |-- TableCps
-            |       |-- index.tsx
-            |       |-- readme.md
             |-- config 配置
             |   |-- iconfont.ts
             |   |-- menus.tsx
@@ -169,11 +125,6 @@ npm run pack-all // 打包所有平台
             |   |   |   |-- foo.ts
             |   |   |-- services
             |   |       |-- foo.ts
-            |   |-- Home 业务
-            |       |-- Edge
-            |       |   |-- index.tsx
-            |       |-- Settings
-            |           |-- index.tsx
             |-- utils 工具集
 
 ```
@@ -181,8 +132,6 @@ npm run pack-all // 打包所有平台
 ### eslint
 默认开启[alloy](https://github.com/AlloyTeam/eslint-config-alloy)配置
 `eslint-config-alloy`
-
-
 
 ### log
 
@@ -212,8 +161,3 @@ log.warn('Some problem appears');
 (官方electron文档)[https://www.electronjs.org/docs]
 (官方umi文档)[https://umijs.org/]
 
-###### 能用或者好用麻烦给一颗卑微的星星~谢谢  补充或者建议请提issue
-
-
-
-[github](https://github.com/qld-cf/electron-react-tpl)

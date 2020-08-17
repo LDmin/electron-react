@@ -1,34 +1,23 @@
-import React, { useState, createContext } from 'react'
-import { Layout } from 'antd'
-import SideMenu from './menu'
-import styles from './index.less'
+import React, { useState } from "react";
+import { Input, Divider, Card } from "antd";
+import { Link } from "umi";
 
-// const LayoutContext = createContext()
+const Layout: React.FC = (props) => {
+  const [url, setUrl] = useState("");
+  return (
+    <>
+      <Card>
+        <Input
+          style={{ width: 200 }}
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+        >
+        </Input>
+        <Link to={url}>go to {url}</Link>
+      </Card>
+      <div>{props.children}</div>
+    </>
+  );
+};
 
-const { Content, Sider, Header } = Layout
-
-const BasicLayout: React.FC = props => {
-  console.log(props.children)
-  const [collapsed, setCollapsed] = useState(false)
-
-  const LayoutMain = (
-    <Layout className={styles.container}>
-      <Header>hello world</Header>
-      <Layout>
-        {/* 左侧菜单 */}
-        <Sider collapsed={collapsed}>
-          <SideMenu />
-        </Sider>
-
-        {/* 右侧 content */}
-        <Layout>
-          <Content className={styles.content}>{props.children}</Content>
-        </Layout>
-      </Layout>
-    </Layout>
-  )
-
-  return LayoutMain
-}
-
-export default BasicLayout
+export default React.memo(Layout);
