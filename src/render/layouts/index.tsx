@@ -3,6 +3,7 @@ import { Input, Drawer, Card } from "antd";
 import { Link } from "umi";
 import { usePersistFn } from "ahooks";
 import Mousetrap from "mousetrap";
+import { remote } from "electron";
 
 const Layout: React.FC = (props) => {
   const [visible, setVisible] = useState(false);
@@ -21,14 +22,14 @@ const Layout: React.FC = (props) => {
       location.reload();
       return false;
     });
+    Mousetrap.bind(["command+p", "ctrl+p"], () => {
+      remote.getCurrentWindow().webContents.openDevTools();
+      return false;
+    });
   }, []);
   return (
     <>
-      <Drawer
-        placement="top"
-        visible={visible}
-        onClose={onClose}
-      >
+      <Drawer placement="top" visible={visible} onClose={onClose}>
         <Input
           style={{ width: 200 }}
           value={url}

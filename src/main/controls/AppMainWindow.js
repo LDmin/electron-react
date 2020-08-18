@@ -60,7 +60,7 @@ export default class AppMainWindow extends BrowserWindow {
 
     // if (isDevEnv) {
     // 打开开发者工具
-    // this.mainWindow.openDevTools()
+    this.mainWindow.openDevTools()
     // }
     // 异步安装插件
     // installExtension(REACT_DEVELOPER_TOOLS)

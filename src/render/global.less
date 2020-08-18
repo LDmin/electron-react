@@ -1,7 +1,6 @@
 /**
  * Umi 中约定 src/global.less 为全局样式
  */
-// @import './assets/style/bootstrap-part.less';
 @import './assets/style/common.less';
 
 :root {
@@ -25,6 +24,18 @@ body {
   margin: 0;
 }
 
+.t-l {
+  text-align: left;
+}
+
+.t-c {
+  text-align: center;
+}
+
+.t-r {
+  text-align: right;
+}
+
 // 滚动条美化
 * {
   &::-webkit-scrollbar {
@@ -43,4 +54,21 @@ body {
     border-radius: 2px;
     background: #ededed; // 条背景
   }
+}
+
+.ant-table {
+
+  .ant-table-container,
+  .ant-table-container table>thead>tr:first-child th:first-child,
+  .ant-table-container table>thead>tr:first-child th:last-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .ant-table-thead>tr>th {
+    background: #f9f9f9;
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+  }
+
 }
