@@ -16,7 +16,7 @@ import AppTray from './controls/AppTray'
 import {
   PROJECT_NAME,
   IS_MAC
-} from './config/config'
+} from '../config'
 
 const store = new Store()
 

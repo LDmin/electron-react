@@ -24,6 +24,7 @@
   "exclude": [
     "eslint-rules",
     "./src/main/*",
-    "./src/render/dist/*"
+    "./src/render/dist/*",
+    "./src/config.js"
   ]
 }

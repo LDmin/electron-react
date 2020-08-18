@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@components/Card";
 import { Row, Col, Typography, Table } from "antd";
-import { useRequest } from "umi";
+import { useRequest, Link } from "umi";
 import Button from "@components/Button";
 import { useCreation } from "ahooks";
 
@@ -62,12 +62,14 @@ const CaseList: React.FC = () => {
 
   return (
     <Card>
-      <Row align="middle">
+      <Row align="top">
         <Col flex="auto">
           <Title level={2}>案件列表</Title>
         </Col>
         <Col>
-          <Button>+ 添加案件</Button>
+          <Link to="/app/case/create/new">
+            <Button>+ 添加案件</Button>
+          </Link>
         </Col>
       </Row>
       <Table columns={columns} {...tableProps} rowKey="id" />

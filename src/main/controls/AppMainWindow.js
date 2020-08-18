@@ -22,7 +22,7 @@ import AppAutoUpdater from '../controls/AppAutoUpdater'
 import {
   DEV_ADDRESS,
   IS_MAC
-} from '../config/config'
+} from '../../config'
 
 export default class AppMainWindow extends BrowserWindow {
   constructor() {
