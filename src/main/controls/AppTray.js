@@ -10,6 +10,8 @@ const {
 } = require('electron')
 const path = require('path')
 
+const isMac = process.platform === 'darwin'
+
 const trayIcon = `${path.join(__dirname, '/public/tray.png')}`
 
 module.exports = class AppTray {
@@ -40,6 +42,11 @@ module.exports = class AppTray {
     const contextMenu = Menu.buildFromTemplate(trayMenuTemplate)
     // 设置此图标的上下文菜单
     // this.tray.setContextMenu(contextMenu)
+    // mac下设置dock菜单
+    if (isMac) {
+      app.dock.setMenu(contextMenu)
+    }
+
     // 单击右下角小图标显示应用
     this.tray.on('click', () => {
       this.mainWindow.show();

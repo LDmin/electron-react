@@ -3,43 +3,45 @@
  */
 'use strict'
 
-const {
+import {
   BrowserView,
   BrowserWindow
-} = require('electron')
-const isDevEnv = require('electron-is-dev')
-const path = require('path')
-const {
+} from 'electron'
+import isDevEnv from 'electron-is-dev'
+import path from 'path'
+import {
   autoUpdater
-} = require('electron-updater')
-const {
-  default: installExtension,
-  REACT_DEVELOPER_TOOLS,
-  REDUX_DEVTOOLS
-} = require('electron-devtools-installer')
-const electronHelper = require('./electron-helper')
-const AppAutoUpdater = require('../controls/AppAutoUpdater')
-const {
-  DEV_ADDRESS
-} = require('../config/config')
-const log = require('electron-log');
+} from 'electron-updater'
+// import {
+//   REACT_DEVELOPER_TOOLS,
+//   REDUX_DEVTOOLS
+// } from 'electron-devtools-installer'
+import log from 'electron-log'
+// import electronHelper from './electron-helper'
+import AppAutoUpdater from '../controls/AppAutoUpdater'
+import {
+  DEV_ADDRESS,
+  IS_MAC
+} from '../config/config'
 
-module.exports = class AppMainWindow extends BrowserWindow {
+export default class AppMainWindow extends BrowserWindow {
   constructor() {
     const config = {
-      width: 1010,
+      width: 1200,
       height: 716,
-      minWidth: 800,
-      minHeight: 600,
-      // frame: false,
+      minWidth: 1200,
+      minHeight: 716,
       autoHideMenuBar: false,
-      // titleBarStyle: 'hidden',
+      maximizable: true,
       fullscreen: false,
+      fullscreenable: true,
       webPreferences: {
         nodeIntegration: true,
         webviewTag: true,
         preload: path.join(__dirname, 'preload.js')
-      }
+      },
+      backgroundColor: '#2e2c29',
+      icon: `${path.join(__dirname, '/public/dock.jpeg')}`
     }
 
     super(config)
@@ -95,7 +97,7 @@ module.exports = class AppMainWindow extends BrowserWindow {
 
     this.mainWindow.on('close', e => {
       // mac平台，左上角关闭窗口 = 隐藏窗口
-      // if (process.platform !== "darwin") {
+      // if (!IS_MAC) {
       if (this.mainWindow && this.mainWindow['hide'] && this.mainWindow['setSkipTaskbar']) {
         this.mainWindow.hide()
         e.preventDefault()

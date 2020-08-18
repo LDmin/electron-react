@@ -14,7 +14,7 @@
     "---- 不同接口环境 WEB_ENV=sit  ----": "---- 自动根据操作系统平台构建包 ----",
     "pack-env-sit": "npm run electron:build && cross-env WEB_ENV=sit APP_ROOT=src/render umi build && electron-builder",
     "---- 构建三个操作系统平台包 electron-package-all ----": "---- 构建三个操作系统平台包 ----",
-    "pack-all": "npm run electron:build && cross-env APP_ENV=production APP_ROOT=src/render umi build && electron-builder -mwl",
+    "pack-all": "npm run electron:build && cross-env APP_ENV=production APP_ROOT=src/render umi build && electron-builder -mw",
     "---- 构建 mac 操作系统平台包 electron-package-mac ----": "---- 构建 mac 操作系统平台包 ----",
     "pack-mac": "npm run electron:build && cross-env APP_ENV=production APP_ROOT=src/render umi build && electron-builder -m",
     "---- 构建 windows 操作系统平台包 electron-package-windows ----": "---- 构建 windows 操作系统平台包 ----",
@@ -23,7 +23,7 @@
   "main": "src/main/bundle.js",
   "build": {
     "extends": null,
-    "productName": "APP",
+    "productName": "硅藻项目",
     "appId": "111@qq.com",
     "directories": {
       "output": "release/${version}_setup"
@@ -38,7 +38,8 @@
       "target": [
         "dmg",
         "zip"
-      ]
+      ],
+      "icon": "./src/main/public/favicon.ico"
     },
     "win": {
       "target": [{

@@ -3,15 +3,21 @@
  */
 'use strict'
 
-const {
+import {
   app,
   ipcMain,
   Menu
-} = require('electron')
-const AppMainWindow = require('./controls/AppMainWindow')
-const AppPrintWindow = require('./print/print')
-const AppTray = require('./controls/AppTray')
-const Store = require('electron-store')
+} from 'electron'
+import path from 'path'
+import Store from 'electron-store'
+import AppMainWindow from './controls/AppMainWindow'
+import AppPrintWindow from './print/print'
+import AppTray from './controls/AppTray'
+import {
+  PROJECT_NAME,
+  IS_MAC
+} from './config/config'
+
 const store = new Store()
 
 // for test
@@ -20,9 +26,14 @@ store.set('LOCAL_ELECTRON_STORE', 'WELCOME TO MY TPL')
 // const devTron = require('devtron')
 // const Store = require('electron-store')
 
-const isMac = process.platform === 'darwin'
+// 设置项目名
+app.setName(PROJECT_NAME)
 
 app.allowRendererProcessReuse = true
+
+if (IS_MAC) {
+  app.dock.setIcon(`${path.join(__dirname, '/public/dock.jpeg')}`)
+}
 
 class MainApp {
   constructor() {
@@ -46,8 +57,8 @@ class MainApp {
       console.log('window-all-closed')
       // 在 macOS 上，除非用户用 Cmd + Q 确定地退出，
       // 否则绝大部分应用及其菜单栏会保持激活。
-      console.log('process.platform', process.platform)
-      if (process.platform !== 'darwin') {
+      console.log('IS_MAC', IS_MAC)
+      if (!IS_MAC) {
         console.log('quit')
         app.quit()
       }
@@ -83,46 +94,15 @@ class MainApp {
 
   createMenu() {
     const template = [{
-      label: 'Edit',
-      submenu: [{
-        label: 'Undo',
-        accelerator: 'CmdOrCtrl+Z',
-        role: 'undo'
-      }, {
-        label: 'Redo',
-        accelerator: 'Shift+CmdOrCtrl+Z',
-        role: 'redo'
-      }, {
-        type: 'separator'
-      }, {
-        label: 'Cut',
-        accelerator: 'CmdOrCtrl+X',
-        role: 'cut'
-      }, {
-        label: 'Copy',
-        accelerator: 'CmdOrCtrl+C',
-        role: 'copy'
-      }, {
-        label: 'Paste',
-        accelerator: 'CmdOrCtrl+V',
-        role: 'paste'
-      }, {
-        label: 'Select All',
-        accelerator: 'CmdOrCtrl+A',
-        role: 'selectall'
-      }]
-    }, {
-      label: '开发使用',
+      label: '菜单',
       type: 'submenu',
       submenu: [{
-        label: '切换控制台',
-        accelerator: 'Ctrl+`',
-        role: 'toggleDevTools',
-        // click: (item, focusedWindow) => {
-        //   if (focusedWindow) {
-        //     focusedWindow.toggleDevTools()
-        //   }
-        // }
+        label: '退出',
+        // accelerator: 'Ctrl+`',
+        // role: 'toggleDevTools',·
+        click: (item, focusedWindow) => {
+          app.quit()
+        }
       }]
     }]
 

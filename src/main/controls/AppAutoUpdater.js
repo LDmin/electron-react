@@ -225,6 +225,6 @@ function updateHandle(mainWindow) {
 }
 
 
-module.exports = {
+export default {
   updateHandle,
 }
