@@ -32,7 +32,7 @@ app.setName(PROJECT_NAME)
 app.allowRendererProcessReuse = true
 
 if (IS_MAC) {
-  app.dock.setIcon(`${path.join(__dirname, '/public/dock.jpeg')}`)
+  app.dock.setIcon(`${path.join(__dirname, '/public/dock.png')}`)
 }
 
 class MainApp {

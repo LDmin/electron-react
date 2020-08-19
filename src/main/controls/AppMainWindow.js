@@ -41,7 +41,7 @@ export default class AppMainWindow extends BrowserWindow {
         preload: path.join(__dirname, 'preload.js')
       },
       backgroundColor: '#2e2c29',
-      icon: `${path.join(__dirname, '/public/dock.jpeg')}`
+      icon: `${path.join(__dirname, '/public/dock.png')}`
     }
 
     super(config)
