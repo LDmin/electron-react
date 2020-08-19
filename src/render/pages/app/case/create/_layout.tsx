@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Steps from '@/components/Steps'
+
+import style from './_layout.less'
+import { useModel, useLocation } from 'umi'
 
 const CreateLayout: React.FC = props => {
+  const location = useLocation()
+  const { options, currentStep, setCurrentStepByUrl } = useModel('steps', model => ({
+    options: model.options,
+    currentStep: model.currentStep,
+    setCurrentStepByUrl: model.setCurrentStepByUrl
+  }))
+
+  useEffect(() => setCurrentStepByUrl(location.pathname), [])
+
   return (
     <>
-      <div>1234</div>
+      <div className={style['steps-wrapper']}>
+        <Steps options={options} currentStep={currentStep}></Steps>
+      </div>
       {props.children}
     </>
   )

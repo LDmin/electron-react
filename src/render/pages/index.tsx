@@ -4,11 +4,11 @@ import { Link, history } from 'umi'
 
 const Root: FC = props => {
   useEffect(() => {
-    history.push('/app/case/list')
+    history.push('/login')
     window.stopLoading()
   }, [])
 
-  return ' '
+  return <div>loading...</div>
 }
 
 export default Root

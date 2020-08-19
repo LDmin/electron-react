@@ -1,15 +1,18 @@
-import React from "react";
+import React from 'react'
+import style from './_layout.less'
+import logo from '@/assets/image/logo.png'
 
-interface IProps {
+const LoginLayout: React.FC = props => {
+  return (
+    <div className={style['wrapper']}>
+      <section className={style['section']}>
+        <div className={style['logo']}>
+          <img src={logo} alt='' />
+        </div>
+        <div className={style['children']}>{props.children}</div>
+      </section>
+    </div>
+  )
 }
 
-const LoginLayout: React.SFC<IProps> = (props) => {
-  return (
-    <>
-      this is login layout
-      <div>{props.children}</div>
-    </>
-  );
-};
-
-export default React.memo(LoginLayout);
+export default React.memo(LoginLayout)
