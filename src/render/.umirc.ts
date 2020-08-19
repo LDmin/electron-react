@@ -65,8 +65,8 @@ export default {
   // 路径别名
   alias: {
     '@': resolvePath(''),
+    '@src': resolvePath('../'),
     '@components': resolvePath('components'),
-    '@config': resolvePath('config'),
     '@utils': resolvePath('utils'),
     '@pages': resolvePath('pages')
   }

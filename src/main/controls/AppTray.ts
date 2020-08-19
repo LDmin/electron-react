@@ -1,21 +1,20 @@
 /**
  * APP托盘
  */
-'use strict'
 
-const {
-  app,
-  Menu,
-  Tray
-} = require('electron')
-const path = require('path')
+import { app, Menu, Tray } from 'electron'
+import path from 'path'
+import AppMainWindow from './AppMainWindow'
 
 const isMac = process.platform === 'darwin'
 
-const trayIcon = `${path.join(__dirname, '/public/tray.png')}`
+const trayIcon = `${path.join(__dirname, '/assets/tray.png')}`
 
-module.exports = class AppTray {
-  constructor(mainWindow) {
+export default class AppTray {
+  mainWindow: AppMainWindow
+  tray: Tray
+
+  constructor(mainWindow: AppMainWindow) {
     this.mainWindow = mainWindow || null
 
     this.initTray()
@@ -25,7 +24,8 @@ module.exports = class AppTray {
     this.tray = new Tray(trayIcon)
     this.tray.setToolTip('我的托盘图标')
 
-    const trayMenuTemplate = [{
+    const trayMenuTemplate = [
+      {
         label: '显示主页面',
         click: () => {
           this.mainWindow.show()
@@ -49,7 +49,7 @@ module.exports = class AppTray {
 
     // 单击右下角小图标显示应用
     this.tray.on('click', () => {
-      this.mainWindow.show();
+      this.mainWindow.show()
       // this.mainWindow.isVisible() ? this.mainWindow.hide() : this.mainWindow.show()
       // this.mainWindow.isVisible() ?
       //   this.mainWindow.setSkipTaskbar(false) :

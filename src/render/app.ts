@@ -18,7 +18,6 @@ window.isOpenAutoUpdate = false;
 // 覆写 render
 export function render(oldRender: () => void) {
   oldRender();
-  window.stopLoading();
 }
 
 // 修改交给 react-dom 渲染时的根组件

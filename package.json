@@ -20,7 +20,7 @@
     "---- 构建 windows 操作系统平台包 electron-package-windows ----": "---- 构建 windows 操作系统平台包 ----",
     "pack-windows": "npm run electron:build && cross-env APP_ENV=production APP_ROOT=src/render umi build && electron-builder -w"
   },
-  "main": "src/main/bundle.js",
+  "main": "src/main/dist/index.bundle.js",
   "build": {
     "extends": null,
     "productName": "硅藻项目",
@@ -103,6 +103,7 @@
     "eslint-plugin-react": "^7.19.0",
     "mockjs": "^1.1.0",
     "prettier": "^1.19.1",
+    "ts-loader": "^8.0.2",
     "wait-on": "^4.0.2"
   }
 }

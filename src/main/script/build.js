@@ -3,7 +3,7 @@
  */
 const webpack = require('webpack');
 const chalk = require('chalk');
-const config = require('../config/webpack.config');
+const config = require('../webpack.config');
 
 const compiler = webpack(config);
 const TAG = '[src/main/script/build.js]';
@@ -19,6 +19,7 @@ compiler.run((err, stats) => {
   } else if (stats.hasErrors()) {
     // webpack 编译报错
     const json = stats.toJson('errors-only');
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     console.log(TAG, filterLogs(json.errors)().join('\n'));
     console.log(TAG, chalk.red('💥 Electron 构建报错'));
   } else {

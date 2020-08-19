@@ -13,7 +13,7 @@
     "paths": {
       "@/*": ["src/render/*"],
       "@@/*": ["src/render/.umi/*"],
-      "@config/*": ["src/render/config/*"],
+      "@src/*": ["src/*"],
       "@components/*": ["src/render/components/*"],
       "@utils/*": ["src/render/utils/*"],
       "@typings/*": ["typings/*"],
@@ -23,8 +23,7 @@
   },
   "exclude": [
     "eslint-rules",
-    "./src/main/*",
-    "./src/render/dist/*",
-    "./src/config.js"
+    "./src/main/**/*.js",
+    "./src/render/dist/*"
   ]
 }

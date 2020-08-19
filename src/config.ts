@@ -1,7 +1,3 @@
-/**
- * 主进程全局配置
- */
-
 // 程序名
 export const PROJECT_NAME = '硅藻项目'
 

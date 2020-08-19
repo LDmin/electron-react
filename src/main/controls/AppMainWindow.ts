@@ -3,28 +3,23 @@
  */
 'use strict'
 
-import {
-  BrowserView,
-  BrowserWindow
-} from 'electron'
+import { BrowserView, BrowserWindow } from 'electron'
 import isDevEnv from 'electron-is-dev'
 import path from 'path'
-import {
-  autoUpdater
-} from 'electron-updater'
+import { autoUpdater } from 'electron-updater'
 // import {
 //   REACT_DEVELOPER_TOOLS,
 //   REDUX_DEVTOOLS
 // } from 'electron-devtools-installer'
 import log from 'electron-log'
 // import electronHelper from './electron-helper'
-import AppAutoUpdater from '../controls/AppAutoUpdater'
-import {
-  DEV_ADDRESS,
-  IS_MAC
-} from '../../config'
+import AppAutoUpdater from './AppAutoUpdater'
+import { DEV_ADDRESS, IS_MAC } from '../../config'
 
 export default class AppMainWindow extends BrowserWindow {
+  mainWindow: AppMainWindow
+  browserView: BrowserView
+
   constructor() {
     const config = {
       width: 1200,
@@ -38,10 +33,10 @@ export default class AppMainWindow extends BrowserWindow {
       webPreferences: {
         nodeIntegration: true,
         webviewTag: true,
-        preload: path.join(__dirname, 'preload.js')
+        preload: path.join(__dirname, 'preload.bundle.js')
       },
       backgroundColor: '#2e2c29',
-      icon: `${path.join(__dirname, '/public/dock.png')}`
+      icon: `${path.join(__dirname, '/assets/dock.png')}`
     }
 
     super(config)
@@ -56,11 +51,13 @@ export default class AppMainWindow extends BrowserWindow {
   initMainWindow() {
     // 必须在主进程塞入文件前配置 loading
     this.windowLoading()
-    this.loadURL(isDevEnv ? DEV_ADDRESS : `file://${path.join(__dirname, '../render/dist/index.html')}`)
+    this.loadURL(
+      isDevEnv ? DEV_ADDRESS : `file://${path.join(__dirname, '../render/dist/index.html')}`
+    )
 
     // if (isDevEnv) {
     // 打开开发者工具
-    this.mainWindow.openDevTools()
+    // this.mainWindow.webContents.openDevTools()
     // }
     // 异步安装插件
     // installExtension(REACT_DEVELOPER_TOOLS)
@@ -103,9 +100,9 @@ export default class AppMainWindow extends BrowserWindow {
         e.preventDefault()
         // this.mainWindow.setSkipTaskbar(true)
       }
-
     })
-    this.mainWindow.once('ready-to-show', () => { // 加入loading.html后, 此处updateHandle无效
+    this.mainWindow.once('ready-to-show', () => {
+      // 加入loading.html后, 此处updateHandle无效
       // 检查自动更新
       // log.info('enter ready-to-show')
     })

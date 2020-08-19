@@ -36,26 +36,28 @@ instance.interceptors.response.use(
   }
 )
 
-export const getRequest = (url) => {
+export const getRequest = (url: any) => {
   return instance({
     method: 'get',
     url: url
-  });
+  })
 }
 
-export const postRequest = (url, params) => {
+export const postRequest = (url: any, params: any) => {
   return instance({
     method: 'post',
     url: url,
     data: params,
-    transformRequest: [(data) => {
-      let ret = ''
-      for (const it in data) {
-        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+    transformRequest: [
+      data => {
+        let ret = ''
+        for (const it in data) {
+          ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        }
+        return ret
       }
-      return ret
-    }]
-  });
+    ]
+  })
 }
 
 // export default instance

@@ -1,19 +1,14 @@
-import React, { FC, useEffect } from "react";
-import "./index.less";
-import { Link, history } from "umi";
+import React, { FC, useEffect } from 'react'
+import './index.less'
+import { Link, history } from 'umi'
 
-const Root: FC = (props) => {
+const Root: FC = props => {
   useEffect(() => {
     history.push('/app/case/list')
+    window.stopLoading()
   }, [])
 
-  return (
-    <>
-      pathname: {location.pathname}
-      <Link to="/login">Go to login</Link>
-      <div>{props.children}</div>
-    </>
-  );
-};
+  return ' '
+}
 
-export default Root;
+export default Root
