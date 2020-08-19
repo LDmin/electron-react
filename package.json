@@ -26,7 +26,7 @@
     "productName": "硅藻项目",
     "appId": "111@qq.com",
     "directories": {
-      "output": "release/${version}_setup"
+      "output": "release/0.0.1_setup"
     },
     "files": [
       "!node_modules/**/*",
@@ -39,7 +39,7 @@
         "dmg",
         "zip"
       ],
-      "icon": "./src/main/public/favicon.ico"
+      "icon": "./src/main/public/dock-600.png"
     },
     "win": {
       "target": [{
@@ -49,7 +49,7 @@
           "ia32"
         ]
       }],
-      "artifactName": "${productName}_setup_${version}.${ext}",
+      "artifactName": "${productName}_setup_0.0.1.${ext}",
       "icon": "src/main/public/icon.ico"
     },
     "publish": [{

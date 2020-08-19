@@ -17,8 +17,8 @@ import AppAutoUpdater from './AppAutoUpdater'
 import { DEV_ADDRESS, IS_MAC } from '../../config'
 
 export default class AppMainWindow extends BrowserWindow {
-  mainWindow: AppMainWindow
-  browserView: BrowserView
+  mainWindow: AppMainWindow | null
+  browserView: BrowserView | null
 
   constructor() {
     const config = {
@@ -52,13 +52,11 @@ export default class AppMainWindow extends BrowserWindow {
     // 必须在主进程塞入文件前配置 loading
     this.windowLoading()
     this.loadURL(
-      isDevEnv ? DEV_ADDRESS : `file://${path.join(__dirname, '../render/dist/index.html')}`
+      isDevEnv ? DEV_ADDRESS : `file://${path.join(__dirname, '../../render/dist/index.html')}`
     )
 
-    // if (isDevEnv) {
     // 打开开发者工具
-    // this.mainWindow.webContents.openDevTools()
-    // }
+    // this.mainWindow!.webContents.openDevTools()
     // 异步安装插件
     // installExtension(REACT_DEVELOPER_TOOLS)
     //   .then(name => console.log(`Added Extension REDUX_DEVTOOLS:  ${name}`))
@@ -71,7 +69,7 @@ export default class AppMainWindow extends BrowserWindow {
   // 主进程加载时的loading过渡，避免白屏
   windowLoading() {
     this.browserView = new BrowserView()
-    this.mainWindow.setBrowserView(this.browserView)
+    this.mainWindow!.setBrowserView(this.browserView)
 
     this.browserView.setBounds({
       x: 0,
@@ -82,17 +80,17 @@ export default class AppMainWindow extends BrowserWindow {
     this.browserView.webContents.loadURL(`file://${path.join(__dirname, 'loading.html')}`)
 
     this.browserView.webContents.on('dom-ready', () => {
-      this.mainWindow.show()
+      this.mainWindow!.show()
     })
   }
 
   initEvents() {
     // 窗口关闭的监听
-    this.mainWindow.on('closed', () => {
+    this.mainWindow!.on('closed', () => {
       this.mainWindow = null
     })
 
-    this.mainWindow.on('close', e => {
+    this.mainWindow!.on('close', e => {
       // mac平台，左上角关闭窗口 = 隐藏窗口
       // if (!IS_MAC) {
       if (this.mainWindow && this.mainWindow['hide'] && this.mainWindow['setSkipTaskbar']) {
@@ -101,21 +99,21 @@ export default class AppMainWindow extends BrowserWindow {
         // this.mainWindow.setSkipTaskbar(true)
       }
     })
-    this.mainWindow.once('ready-to-show', () => {
+    this.mainWindow!.once('ready-to-show', () => {
       // 加入loading.html后, 此处updateHandle无效
       // 检查自动更新
       // log.info('enter ready-to-show')
     })
 
-    this.mainWindow.once('show', () => {
+    this.mainWindow!.once('show', () => {
       log.info('enter show')
       // 检查自动更新
-      AppAutoUpdater.updateHandle(this.mainWindow)
+      AppAutoUpdater.updateHandle(this.mainWindow!)
     })
 
     // 隐藏默认菜单
-    this.mainWindow.webContents.once('did-finish-load', () => {
-      this.mainWindow.setMenuBarVisibility(false)
+    this.mainWindow!.webContents.once('did-finish-load', () => {
+      this.mainWindow!.setMenuBarVisibility(false)
     })
   }
 
@@ -124,6 +122,6 @@ export default class AppMainWindow extends BrowserWindow {
   }
 
   removeView() {
-    this.mainWindow.removeBrowserView(this.browserView)
+    this.mainWindow!.removeBrowserView(this.browserView!)
   }
 }

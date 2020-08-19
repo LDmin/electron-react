@@ -67,7 +67,7 @@ const CaseList: React.FC = () => {
     <Card>
       <Row align='top'>
         <Col flex='auto'>
-          <Title level={2}>案件列表</Title>
+          <Title level={3}>案件列表</Title>
         </Col>
         <Col>
           <Link to='/app/case/create/new'>

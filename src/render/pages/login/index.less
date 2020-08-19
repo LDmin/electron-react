@@ -1,0 +1,24 @@
+.wrapper {
+  padding: 40px;
+
+  .form {
+    margin-top: 40px;
+
+    :global {
+      .ant-form-item {
+
+        .ant-form-item-control-input-content {
+          border-bottom: solid 1px rgba(197, 211, 217, 0.86);
+        }
+
+        .ant-input {
+          height: 50px;
+
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
