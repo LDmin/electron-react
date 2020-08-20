@@ -1,10 +1,32 @@
+@import '../../assets/style/common.less';
+
 .steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .step {
-    background: #aaa;
+    padding: @space * 2;
+    width: @space * 8;
+    height: @space * 8;
+    background-color: #e6e6e6;
+    color: @text-color;
+    border-radius: 2px;
+    letter-spacing: 2px;
 
-    .active {
-      background: #aaa;
+    &.active {
+      background-color: #c61c06;
+      color: @text-white;
+    }
+  }
+
+  .connect {
+    width: @space * 8;
+    height: @space * 8;
+    background: url('../../assets/image/step-wait.png') no-repeat center center;
+
+    &.active {
+      background: url('../../assets/image/step-finish.png') no-repeat center center;
     }
   }
 }

@@ -12,13 +12,14 @@ const CreateLayout: React.FC = props => {
     setCurrentStepByUrl: model.setCurrentStepByUrl
   }))
 
-  useEffect(() => setCurrentStepByUrl(location.pathname), [])
+  useEffect(() => setCurrentStepByUrl(location.pathname), [location.pathname])
 
   return (
     <>
       <div className={style['steps-wrapper']}>
         <Steps options={options} currentStep={currentStep}></Steps>
       </div>
+      <div className='spacer-2x'></div>
       {props.children}
     </>
   )

@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
+import stepWait from '../../assets/image/step-wait.png'
+import stepFinish from '../../assets/image/step-finish.png'
 import style from './index.less'
 
 interface IProps {
   options: IStepsOptions
   currentStep: number
-  setCurrentStep?: (currentStep: IProps['currentStep']) => void
+  onClick?: (currentStep: IProps['currentStep']) => void
 }
 
-const itemcpn = (item: IStepsItem, index: number) => (
-  <div className={style['step']} key={item.url}>
-    {item.text}
-  </div>
-)
+const Steps: React.SFC<IProps> = ({ options, currentStep }) => {
+  return (
+    <div className={style['steps']}>
+      {options.map((item, index) => {
+        const isActive = currentStep >= index
 
-const Steps: React.SFC<IProps> = ({ options }) => {
-  return <div className={style['steps']}>{options.map(itemcpn)}</div>
+        return (
+          <Fragment key={item.url}>
+            <div className={`${style['step']} ${isActive ? style['active'] : ''}`} key={item.url}>
+              {item.text}
+            </div>
+            {index !== options.length - 1 && (
+              <div className={`${style['connect']} ${isActive ? style['active'] : ''}`}></div>
+            )}
+          </Fragment>
+        )
+      })}
+    </div>
+  )
 }
 
 export default React.memo(Steps)

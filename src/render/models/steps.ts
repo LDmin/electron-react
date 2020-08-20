@@ -13,7 +13,7 @@ export default function stepsModel() {
     []
   )
 
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentStep, setCurrentStep] = useState(-1)
 
   const setCurrentStepByUrl = usePersistFn((url: string) =>
     setCurrentStep(options.findIndex(o => o.url === url))
