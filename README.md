@@ -13,8 +13,6 @@
 3. antDesign >= 4.0
 4. iconfont图标
 
-- 菜单配置 `src/layouts/menu/config.tsx`
-
 ### 开启
 
 ```
@@ -29,13 +27,10 @@ npm run pack-all // 打包所有平台
 ### 目录树
 ```
 |-- project
-    |-- .editorconfig
     |-- .eslintrc.js
     |-- .gitignore
-    |-- .gitlab-ci.yml
     |-- .prettierignore
-    |-- .prettierrc.js
-    |-- directoryList.md
+    |-- .prettierrc
     |-- package-lock.json
     |-- package.json
     |-- README.md
@@ -101,30 +96,12 @@ npm run pack-all // 打包所有平台
             |-- layouts 布局
             |   |-- index.less
             |   |-- index.tsx
-            |   |-- header
-            |   |   |-- index.less
-            |   |   |-- index.tsx
-            |   |-- loading
-            |   |   |-- index.less
-            |   |   |-- index.tsx
-            |   |-- menu
-            |       |-- index.less
-            |       |-- index.tsx
             |-- mock
             |   |-- foo.ts
             |-- models redux
             |   |-- xxStore.ts
             |-- pages
-            |   |-- home.normal.less
             |   |-- index.tsx
-            |   |-- Foo 示例
-            |   |   |-- index.tsx
-            |   |   |-- components
-            |   |   |   |-- TableList.tsx
-            |   |   |-- models
-            |   |   |   |-- foo.ts
-            |   |   |-- services
-            |   |       |-- foo.ts
             |-- utils 工具集
 
 ```

@@ -3,16 +3,16 @@
  */
 
 import { app, Menu, Tray } from 'electron'
-import path from 'path'
 import AppMainWindow from './AppMainWindow'
+import { ICON_TRAY } from '../../config'
 
 const isMac = process.platform === 'darwin'
 
-const trayIcon = `${path.join(__dirname, '/assets/tray.png')}`
+const trayIcon = ICON_TRAY
 
 export default class AppTray {
   mainWindow: AppMainWindow
-  tray: Tray
+  tray: Tray | undefined
 
   constructor(mainWindow: AppMainWindow) {
     this.mainWindow = mainWindow || null

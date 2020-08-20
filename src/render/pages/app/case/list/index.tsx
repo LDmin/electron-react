@@ -4,6 +4,7 @@ import { Row, Col, Typography, Table } from 'antd'
 import { useRequest, Link } from 'umi'
 import Button from '@components/Button'
 import { useCreation } from 'ahooks'
+import { API_PREFIX } from '@src/config'
 
 const { Title } = Typography
 
@@ -19,7 +20,7 @@ const CaseList: React.FC = () => {
           p[filed] = value
         })
       }
-      return `/mock/api/cases`
+      return `${API_PREFIX}/cases`
     },
     {
       paginated: true,

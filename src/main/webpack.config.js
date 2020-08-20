@@ -4,7 +4,7 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const pathResolve = (dir = '') => path.join(__dirname, dir) // 指向 src/main
+const pathResolve = (dir = '') => path.join(__dirname, dir)
 
 module.exports = {
   mode: 'production',

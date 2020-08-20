@@ -14,7 +14,7 @@ import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 // import electronHelper from './electron-helper'
 import AppAutoUpdater from './AppAutoUpdater'
-import { DEV_ADDRESS, IS_MAC } from '../../config'
+import { DEV_ADDRESS, IS_MAC, ICON_WINDOW } from '../../config'
 
 export default class AppMainWindow extends BrowserWindow {
   mainWindow: AppMainWindow | null
@@ -36,7 +36,7 @@ export default class AppMainWindow extends BrowserWindow {
         preload: path.join(__dirname, 'preload.bundle.js')
       },
       backgroundColor: '#2e2c29',
-      icon: `${path.join(__dirname, '/assets/dock.png')}`
+      icon: ICON_WINDOW
     }
 
     super(config)
