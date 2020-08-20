@@ -1,8 +1,7 @@
 import React from 'react'
 import Card from '@components/Card'
-import { Row, Col, Typography, Table } from 'antd'
+import { Row, Col, Typography, Table, Button } from 'antd'
 import { useRequest, Link } from 'umi'
-import Button from '@components/Button'
 import { useCreation } from 'ahooks'
 import { API_PREFIX } from '@src/config'
 
@@ -72,7 +71,7 @@ const CaseList: React.FC = () => {
         </Col>
         <Col>
           <Link to='/app/case/create/new'>
-            <Button>+ 添加案件</Button>
+            <Button type='primary'>+ 添加案件</Button>
           </Link>
         </Col>
       </Row>

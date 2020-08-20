@@ -1,6 +1,5 @@
 import React from 'react'
-import { Form, Typography, Input } from 'antd'
-import Button from '@/components/Button'
+import { Form, Typography, Input, Button } from 'antd'
 
 import style from './index.less'
 import { useCreation, usePersistFn } from 'ahooks'
@@ -33,7 +32,7 @@ const Login: React.SFC<IProps> = () => {
 
         <Form.Item>
           <div className='spacer-4x'></div>
-          <Button htmlType='submit' block size='large'>
+          <Button type='primary' htmlType='submit' block size='large'>
             登陆系统
           </Button>
         </Form.Item>

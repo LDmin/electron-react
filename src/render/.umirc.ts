@@ -56,11 +56,10 @@ export default {
   publicPath: './',
   // antd 主题配置
   theme: {
-    '@primary-color': '#A14EFF',
-    '@link-color': '#A14EFF',
+    '@primary-color': '#cd1c17',
+    '@link-color': '#cd1c17',
     '@font-family': '"futura-pt", sans-serif',
-    '@line-height-base': '1.3',
-    '@border-radius-base': '6px'
+    '@line-height-base': '1.3'
   },
   // 路径别名
   alias: {

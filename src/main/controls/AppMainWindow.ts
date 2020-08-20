@@ -23,9 +23,9 @@ export default class AppMainWindow extends BrowserWindow {
   constructor() {
     const config = {
       width: 1200,
-      height: 716,
+      height: 800,
       minWidth: 1200,
-      minHeight: 716,
+      minHeight: 800,
       autoHideMenuBar: false,
       maximizable: true,
       fullscreen: false,
